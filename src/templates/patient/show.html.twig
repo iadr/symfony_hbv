@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patient{% endblock %}
+
+{% block body %}
+    <h1>Patient</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ patient.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombres</th>
+                <td>{{ patient.nombres }}</td>
+            </tr>
+            <tr>
+                <th>ApellidoPaterno</th>
+                <td>{{ patient.apellidoPaterno }}</td>
+            </tr>
+            <tr>
+                <th>ApellidoMaterno</th>
+                <td>{{ patient.apellidoMaterno }}</td>
+            </tr>
+            <tr>
+                <th>Rut</th>
+                <td>{{ patient.rut }}</td>
+            </tr>
+            <tr>
+                <th>Dv</th>
+                <td>{{ patient.dv }}</td>
+            </tr>
+            <tr>
+                <th>FechaNacimiento</th>
+                <td>{{ patient.fechaNacimiento ? patient.fechaNacimiento|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{{ patient.sexo }}</td>
+            </tr>
+            <tr>
+                <th>NombreSocial</th>
+                <td>{{ patient.nombreSocial }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ patient.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ patient.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ patient.email }}</td>
+            </tr>
+            <tr>
+                <th>EstadoCivil</th>
+                <td>{{ patient.estadoCivil }}</td>
+            </tr>
+            <tr>
+                <th>Pais</th>
+                <td>{{ patient.pais }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ patient.region }}</td>
+            </tr>
+            <tr>
+                <th>Comuna</th>
+                <td>{{ patient.comuna }}</td>
+            </tr>
+            <tr>
+                <th>EsUrbano</th>
+                <td>{{ patient.esUrbano ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ patient.foto }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_patient_index') }}">back to list</a>
+
+    <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">edit</a>
+
+    {{ include('patient/_delete_form.html.twig') }}
+{% endblock %}

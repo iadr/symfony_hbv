@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Indice de Pacientes{% endblock %}
+
+{% block body %}
+    <h1>Indice de Pacientes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Rut</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Sexo</th>
+                <th>Nombre Social</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Estado Civil</th>
+                <th>Pais</th>
+                <th>Region</th>
+                <th>Comuna</th>
+                <th>EsUrbano</th>
+                <th>Foto</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.nombres }}</td>
+                <td>{{ patient.apellidoPaterno }}</td>
+                <td>{{ patient.apellidoMaterno }}</td>
+                <td>{{ patient.rut }}-{{ patient.dv }}</td>
+                <td>{{ patient.fechaNacimiento ? patient.fechaNacimiento|date('d/m/Y') : '' }}</td>
+                <td>{{ sexo[patient.sexo] }}</td>
+                <td>{{ patient.nombreSocial }}</td>
+                <td>{{ patient.direccion }}</td>
+                <td>{{ patient.telefono }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ estadoCivil[patient.estadoCivil] }}</td>
+                <td>{{ patient.pais }}</td>
+                <td>{{ patient.region }}</td>
+                <td>{{ patient.comuna }}</td>
+                <td>{{ patient.esUrbano ? 'Urbano' : 'Rural' }}</td>
+                <td>{{ patient.foto }}</td>
+                <td>
+                    <a href="{{ path('app_patient_show', {'id': patient.id}) }}">mostrar</a>
+                    <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no se encontraron registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_patient_new') }}">Ingresar nuevo paciente</a>
+{% endblock %}
