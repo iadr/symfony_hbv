@@ -14,6 +14,9 @@
  Date: 12/07/2023 22:45:33
 */
 
+CREATE DATABASE hbv;
+USE hbv;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
